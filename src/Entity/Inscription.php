@@ -17,6 +17,9 @@ class Inscription
     #[ORM\JoinColumn(nullable: false)]
     private $etudiant;
 
+    #[ORM\ManyToOne(targetEntity: Classe::class, inversedBy: 'inscriptions')]
+    private $classe;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -30,6 +33,18 @@ class Inscription
     public function setEtudiant(?Etudiant $etudiant): self
     {
         $this->etudiant = $etudiant;
+
+        return $this;
+    }
+
+    public function getClasse(): ?Classe
+    {
+        return $this->classe;
+    }
+
+    public function setClasse(?Classe $classe): self
+    {
+        $this->classe = $classe;
 
         return $this;
     }

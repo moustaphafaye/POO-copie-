@@ -18,9 +18,13 @@ class Professeur extends Personne
     #[ORM\ManyToMany(targetEntity: Classe::class, inversedBy: 'professeurs')]
     private $classes;
 
+    #[ORM\ManyToMany(targetEntity: Module::class, inversedBy: 'professeurs')]
+    private $modules;
+
     public function __construct()
     {
         $this->classes = new ArrayCollection();
+        $this->modules = new ArrayCollection();
     }
 
   
@@ -57,6 +61,30 @@ class Professeur extends Personne
     public function removeClass(Classe $class): self
     {
         $this->classes->removeElement($class);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Module>
+     */
+    public function getModules(): Collection
+    {
+        return $this->modules;
+    }
+
+    public function addModule(Module $module): self
+    {
+        if (!$this->modules->contains($module)) {
+            $this->modules[] = $module;
+        }
+
+        return $this;
+    }
+
+    public function removeModule(Module $module): self
+    {
+        $this->modules->removeElement($module);
 
         return $this;
     }

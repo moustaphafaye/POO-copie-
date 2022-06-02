@@ -22,6 +22,9 @@ class Demande
     #[ORM\Column(type: 'string', length: 15)]
     private $etat;
 
+    #[ORM\ManyToOne(targetEntity: Etudiant::class, inversedBy: 'demandes')]
+    private $etudiant;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Demande
     public function setEtat(string $etat): self
     {
         $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getEtudiant(): ?Etudiant
+    {
+        return $this->etudiant;
+    }
+
+    public function setEtudiant(?Etudiant $etudiant): self
+    {
+        $this->etudiant = $etudiant;
 
         return $this;
     }

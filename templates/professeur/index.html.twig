@@ -8,13 +8,47 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
+<div id="listerprof" class="container mt-5">
+
     <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/moustapha/Documents/Symfony1/POO/src/Controller/ProfesseurController.php'|file_link(0) }}">src/Controller/ProfesseurController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/moustapha/Documents/Symfony1/POO/templates/professeur/index.html.twig'|file_link(0) }}">templates/professeur/index.html.twig</a></code></li>
-    </ul>
+    {# This friendly message is coming from: #}
+    {# <div id="listerprof" class="container mt-5"> #}
+  
+   
+ <h1 class="hh1">Lister Professeur</h1>
+ 
+<table class="table table-hover ">
+    <thead>
+        <tr> 
+            <th>Nom Complet</th>
+            <th>Grade</th>
+            <th>Sexe</th>
+            <th>Action</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for prof in professeur %}
+        
+        <tr>
+            <td>{{prof.nomComplet}}</td>
+            <td>{{prof.grade}}</td>
+            <td>{{prof.sexe}}</td>
+            <td>
+                <button  class='btn btn-outline-warning'>Modifier </button>
+                <form class="btn btn-outline" style="border:none;" action="" method="post">
+                    <input type="hidden" name="id" value="">
+                    <button class='btn btn-outline-danger' type="submit">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+             {% endfor %}
+    </tbody>
+</table>
+       <div class="d-flex justify-content-center">
+        {% do professeur.setPageRange(10) %}
+        {{knp_pagination_render(professeur,'pagination.html.twig')}}
+        </div>
 </div>
 {% endblock %}
