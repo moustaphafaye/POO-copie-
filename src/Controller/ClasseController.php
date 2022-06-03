@@ -2,12 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\Classe;
+use App\Form\ClasseType;
 use App\Repository\ClasseRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use ContainerN0E6N6A\PaginatorInterface_82dac15;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ClasseController extends AbstractController
@@ -31,4 +36,19 @@ class ClasseController extends AbstractController
             'classes' => $classes
         ]);
     }
+    #[Route('/add-classe', name: 'add_classe')]
+    public function add_classe(Request $request ,EntityManagerInterface $manager){
+
+        $classes=new Classe();
+        $form=$this->createForm(ClasseType::class,$classes  );
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $manager->persist($classes);
+            $manager->flush();
+            // return $this->redirectToRoute('classe');
+        }
+        return $this->render('classe/form.html.twig',['form'=>$form->createView()]);
+
+    }
+    
 }

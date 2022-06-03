@@ -12,18 +12,18 @@ class DemandeFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
-        $motif=["je suis malade","Je dois voyager","J'ai un mariage"];
+        $motif=["je suis malade","Je dois voyager","je suis a la maison"];
         $etat=["valide","annuller"];
         
         
-        for ($i=0; $i< 6; $i++){
+        for ($i=0; $i< 20; $i++){
             $demande=new Demande();
             $a=rand(0,2);
             $b=rand(0,1);
 
             $demande->setMotif($motif[$a]); 
             $demande->setEtat($etat[$b]); 
-            $demande->setDate(null); 
+            $demande->setDate(new \DateTime()); 
 
            $a++;
            $b++;

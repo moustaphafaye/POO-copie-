@@ -8,13 +8,55 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div id="listerprof" class="container mt-5">
 
-    This friendly message is coming from:
-    <ul>
+    {# <h1>Hello {{ controller_name }}! ✅</h1> #}
+
+    
+    {# <ul>
         <li>Your controller at <code><a href="{{ '/home/moustapha/Documents/Symfony1/POO/src/Controller/DemandeController.php'|file_link(0) }}">src/Controller/DemandeController.php</a></code></li>
         <li>Your template at <code><a href="{{ '/home/moustapha/Documents/Symfony1/POO/templates/demande/index.html.twig'|file_link(0) }}">templates/demande/index.html.twig</a></code></li>
-    </ul>
+    </ul> #}
+   <h1>HELLO<h1
+   
+ <h1>Lister Classe</h1>
+ 
+<table class="table table-hover ">
+    <thead>
+        <tr> 
+            <th>motif</th>
+            <th>date</th>
+            <th>etat</th>
+            {# <th>etudiant</th> #}
+
+            <th>Acteur</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dema in demande %}
+        <tr>
+            <td>{{dema.motif}}</td>
+            <td>{{dema.date}}</td>
+            <td>{{dema.etat}}</td>
+            {# <td>{{dema.etudiant_id}}</td> #}
+            
+
+
+            <td>
+                <button  class='btn btn-outline-warning'>Modifier </button>
+                <form class="btn btn-outline" style="border:none;" action="" method="post">
+                    <input type="hidden" name="id" value="">
+                    <button class='btn btn-outline-danger' type="submit">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+             {% endfor %}
+    </tbody>
+</table>
+        {# <div class="d-flex justify-content-center">
+        {% do classes.setPageRange(10) %}
+        {{knp_pagination_render(classes,'pagination.html.twig')}}
+        </div> #}
+</div>
 </div>
 {% endblock %}
