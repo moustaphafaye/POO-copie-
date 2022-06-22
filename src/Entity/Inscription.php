@@ -13,12 +13,15 @@ class Inscription
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\ManyToOne(targetEntity: Etudiant::class, inversedBy: 'inscriptions')]
+    #[ORM\ManyToOne(targetEntity: Etudiant::class, inversedBy: 'inscriptions',cascade:["persist"])]
     #[ORM\JoinColumn(nullable: false)]
     private $etudiant;
 
     #[ORM\ManyToOne(targetEntity: Classe::class, inversedBy: 'inscriptions')]
     private $classe;
+
+    #[ORM\OneToOne(targetEntity: AnneeScolaire::class, cascade: ['persist', 'remove'])]
+    private $anneeScolaire;
 
     public function getId(): ?int
     {
@@ -45,6 +48,18 @@ class Inscription
     public function setClasse(?Classe $classe): self
     {
         $this->classe = $classe;
+
+        return $this;
+    }
+
+    public function getAnneeScolaire(): ?AnneeScolaire
+    {
+        return $this->anneeScolaire;
+    }
+
+    public function setAnneeScolaire(?AnneeScolaire $anneeScolaire): self
+    {
+        $this->anneeScolaire = $anneeScolaire;
 
         return $this;
     }

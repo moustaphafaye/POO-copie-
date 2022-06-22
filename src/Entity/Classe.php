@@ -2,12 +2,21 @@
 
 namespace App\Entity;
 
-use App\Repository\ClasseRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use App\Repository\ClasseRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 #[ORM\Entity(repositoryClass: ClasseRepository::class)]
+#[UniqueEntity(fields:'libele',message:'libelle doit etre unique')]
+
+
+
 class Classe
 {
     #[ORM\Id]
@@ -15,9 +24,14 @@ class Classe
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 100)]
+    #[ORM\Column(type: 'string', length: 100,unique:true)]
+    // #[Assert\NotBlank(message:'champ obligatoire')]
+    // #[Assert\Unique(message:'le libelle est unique')]
+
     private $libele;
 
+    public static $niveaux=['L1'=>'L1','L2'=>'L2'];
+    
     #[ORM\Column(type: 'string', length: 100)]
     private $filiere;
 
@@ -132,5 +146,8 @@ class Classe
         }
 
         return $this;
+    }
+    public function  __toString():string{
+    return $this->getlibele();
     }
 }

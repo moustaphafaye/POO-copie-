@@ -1,20 +1,69 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+       <meta charset="utf-8">
+        <!-- importer le fichier de style -->
+    <link rel="stylesheet" href="css/style.css"> 
+
+        <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
+    </head>
+    <body>
+        <div id="container">
+            <!-- zone de connexion -->
+            
+            
+            <form action="{{ path('app_secutiry') }}" method="post">
+                <h1>Connexion</h1>
+                
+                <label><b>Email d'utilisateur</b></label>
+                 {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+                <input type="text"id="username" name="_username" value="{{ last_username }}" placeholder="Entrer le nom d'utilisateur" />
+
+                <label><b>Mot de passe</b></label>
+                <input name="_password" type="password" placeholder="Entrer le mot de passe" >
+
+                <input type="submit" id='submit' value='LOGIN' >
+                
+            </form>
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{# {% extends 'base.html.twig' %} #}
+
+{# {% block title %}Hello UserController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+ {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %} #}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {# <form action="{{ path('app_secutiry') }}" method="post">
+        <label for="username">Email:</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}"/>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/moustapha/Documents/Symfony1/POO/src/Controller/UserController.php'|file_link(0) }}">src/Controller/UserController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/moustapha/Documents/Symfony1/POO/templates/user/index.html.twig'|file_link(0) }}">templates/user/index.html.twig</a></code></li>
-    </ul>
-</div>
-{% endblock %}
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="_password"/>
+
+        {# If you want to control the URL the user is redirected to on success
+        <input type="hidden" name="_target_path" value="/account"/> #}
+
+        {# <button type="submit">login</button>
+    </form> 
+{% endblock %} #}

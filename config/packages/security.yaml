@@ -8,7 +8,7 @@ security:
         app_user_provider:
             entity:
                 class: App\Entity\User
-                property: login
+                property: login 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -16,6 +16,12 @@ security:
         main:
             lazy: true
             provider: app_user_provider
+            form_login:
+                # "login" is the name of the route created previously
+                login_path: app_secutiry
+                check_path: app_secutiry
+            logout:
+                path: app_logout
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

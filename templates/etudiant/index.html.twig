@@ -10,16 +10,9 @@
 
 {# <div class="example-wrapper"> #}
 <div id="listerprof" class="container mt-5">
-
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    
-    {# <ul>
-        <li>Your controller at <code><a href="{{ '/home/moustapha/Documents/Symfony1/POO/src/Controller/EtudiantController.php'|file_link(0) }}">src/Controller/EtudiantController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/moustapha/Documents/Symfony1/POO/templates/etudiant/index.html.twig'|file_link(0) }}">templates/etudiant/index.html.twig</a></code></li>
-    </ul> #}
-
-<h1 class="hh1">Lister Professeur</h1>
+   <div class="centre">
+     <h1 class="hh1">Lister Etudiant  </h1>
+     </div> 
  
 <table class="table table-hover ">
     <thead>
@@ -54,12 +47,12 @@
              {% endfor %}
     </tbody>
 </table>
-       {# <div class="d-flex justify-content-center">
-        {% do professeur.setPageRange(10) %}
-        {{knp_pagination_render(professeur,'pagination.html.twig')}}
-        </div> #}
+       <div class="d-flex justify-content-center">
+        {% do etudiant.setPageRange(10) %}
+        {{knp_pagination_render(etudiant,'pagination.html.twig')}}
+        </div>
 </div>
 
     
-</div>
+{# </div> #}
 {% endblock %}

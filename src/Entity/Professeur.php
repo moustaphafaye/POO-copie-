@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProfesseurRepository::class)]
-class Professeur extends Personne
+class Professeur extends Personne 
 {
     
 
@@ -87,5 +87,8 @@ class Professeur extends Personne
         $this->modules->removeElement($module);
 
         return $this;
+    }
+    public function  __toString():string{
+        return $this->getNomComplet();
     }
 }

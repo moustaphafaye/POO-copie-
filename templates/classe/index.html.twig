@@ -29,18 +29,18 @@
         {{classe.niveau}}<br>
     {% endfor %} #}
 <div id="listerprof" class="container mt-5">
-   <h1>HELLO<h1
-  
- <h1 class="hh1">Lister Classe</h1>
-
-  
+   <div class="centre">
+     <h1 class="hh1">Lister Classe</h1>
+     </div>  
 <table class="table table-hover ">
     <thead>
         <tr> 
             <th>libele</th>
             <th>filiere</th>
             <th>niveau</th>
-            <th>Acteur</th>
+            <th>Action</th>
+            <th>-</th>
+            <th>-</th>
         </tr>
     </thead>
     <tbody>
@@ -49,18 +49,19 @@
             <td>{{classe.libele}}</td>
             <td>{{classe.filiere}}</td>
             <td>{{classe.niveau}}</td>
-            <td>
-                <button  class='btn btn-outline-warning'>Modifier </button>
-                <form class="btn btn-outline" style="border:none;" action="" method="post">
-                    <input type="hidden" name="id" value="">
-                    <button class='btn btn-outline-danger' type="submit">Supprimer</button>
-                </form>
-            </td>
+            <td> <a href="{{path('edit_classe',{id:classe.id})}}"><button  class='btn btn-outline-warning'>Modifier </button></a></td>
+             <td> <a href="{{path('delete_classe',{id:classe.id})}}"><button class='btn btn-outline-danger' >Supprimer</button></a></td>
+             <td> <a href=""><button class='btn btn-outline-danger' type="submit">Détail</button></a></td>
+           
+              
+            
         </tr>
              {% endfor %}
+
     </tbody>
 </table>
-<button style="width: 15em;" class='btn btn-outline-warning'>Creer classe  </button>
+
+ <a href="{{ path('add_classe')}}" ><button style="width: 15em;" class='btn btn-outline-warning'>Creer classe  </button></a>
 
         <div class="d-flex justify-content-center">
         {% do classes.setPageRange(10) %}

@@ -77,6 +77,7 @@
 }
 
 body {
+  /* overflow: hidden; */
   margin: 0;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
@@ -88,7 +89,26 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+thead {
+  background-color: #25cff2;
+}
+.centre{
+  text-align: center;
+}
 
+#profs{
+  height: 30em;
+ 
+  border-radius: 0.5em;
+  background-color: #25cff2;
+  padding: 2em;
+}
+#prof{
+  /* height: 40em; */
+  border-radius: 0.5em;
+  background-color: #25cff2;
+  padding: 0.5em;
+}
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -100,6 +120,21 @@ hr {
   background-color: #25cff2;
   font-size: 1.5em;
   /* width: 15em; */
+}
+#listerprof{
+  height: 100%;
+  border-radius: 1em;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.6), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+ 
+}
+#proff{
+  height: 20em;
+  background-color: #25cff2;
+
+}
+#connexion{
+  height: 20em;
+  background-color: #055160;
 }
 #nav{
   /* border-radius: 1em; */
@@ -2497,8 +2532,8 @@ textarea.form-control-lg {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+  /* -webkit-print-color-adjust: exact;
+          color-adjust: exact; */
 }
 .form-check-input[type=checkbox] {
   border-radius: 0.25em;

@@ -17,7 +17,7 @@ class ClasseFixtures extends Fixture
             $rand=rand(0,2); 
             $classe->setFiliere($filiere[$rand])
                    ->setNiveau($niveaux[$rand]) 
-                   ->setLibele($niveaux[$rand].' '.$filiere[$rand]); 
+                   ->setLibele($niveaux[$rand].' '.$filiere[$rand].$i); 
             $manager->persist($classe); 
             $this->addReference('classe'.$i,$classe); 
             

@@ -3,18 +3,59 @@
 {% block title %}Hello ModuleController!{% endblock %}
 
 {% block body %}
-<style>
+{# <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+</style> #}
+<div id="listerprof" class="container mt-5">
 
-<div class="example-wrapper">
+ <div class="centre">
+     <h1 class="hh1">Liste Module</h1>
+     </div>
     <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
+    <table class="table table-hover ">
+   
+        <thead >
+            <tr> 
+                <th>#</th>
+                <th>libelle</th>
+                <th>Action</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% set myVal = 1 %}
+            {% for modd in module %}
+                <tr>
+                <td> {{ myVal}}</td>
+                <td> {{modd.libelleModule}}</br> </td>
+                <td>
+            <button  class='btn btn-outline-warning'>Modifier </button>
+                <form class="btn btn-outline" style="border:none;" action="" method="post">
+                    <input type="hidden" name="id" value="">
+                    <button class='btn btn-outline-danger' type="submit">Supprimer</button>
+                </form>                </td>
+                <tr>
+                 {% set myVal = myVal + 1 %}
+            {% endfor %}
+        </tbody>
+    </table>   
+    {# <ul>
         <li>Your controller at <code><a href="{{ '/home/moustapha/Documents/Symfony1/POO/src/Controller/ModuleController.php'|file_link(0) }}">src/Controller/ModuleController.php</a></code></li>
         <li>Your template at <code><a href="{{ '/home/moustapha/Documents/Symfony1/POO/templates/module/index.html.twig'|file_link(0) }}">templates/module/index.html.twig</a></code></li>
-    </ul>
+    </ul> #}
+     <div class="d-flex justify-content-center">
+        {% do module.setPageRange(10) %}
+        {{knp_pagination_render(module,'pagination.html.twig')}}
+        </div>
 </div>
+
+
 {% endblock %}
+
+{# {% set myVal = 50 %}
+
+{% for item in items%}
+     {{ myVal = myVal + 10 }}
+{% endfor %} #}

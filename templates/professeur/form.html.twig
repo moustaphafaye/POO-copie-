@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PersonneController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<div id="listerprof" class="container mt-5">
+
+<div id="profs" class="example-wrapper">
+   <div class="centre">
+     <h1 class="hh1">add Professeur</h1>
+     </div>
+   
+    {# <ul>
+        <li>Your controller at <code><a href="{{ '/home/moustapha/Documents/Symfony1/POO/src/Controller/PersonneController.php'|file_link(0) }}">src/Controller/PersonneController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/home/moustapha/Documents/Symfony1/POO/templates/personne/index.html.twig'|file_link(0) }}">templates/personne/index.html.twig</a></code></li>
+    </ul> #}
+    {{form_start(form)}}
+    {{ form_row(form.nomComplet,{'attr':{'placeholder':"nom_Complet"}}) }}
+    {{ form_row(form.sexe,{'attr':{'placeholder':"sexe"}})}}
+    {{ form_row(form.grade,{'attr':{'placeholder':"grade"}})}}
+    
+      <button type:"submit" class="btn btn-success">
+        {% if edit %}Modifier
+
+        {% else %}Enregistrer
+        {% endif %}
+        
+      </button>
+
+    {{form_end(form)}}
+</div>
+</div>
+
+
+{% endblock %}

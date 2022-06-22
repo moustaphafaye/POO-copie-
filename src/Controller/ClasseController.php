@@ -40,15 +40,42 @@ class ClasseController extends AbstractController
     public function add_classe(Request $request ,EntityManagerInterface $manager){
 
         $classes=new Classe();
-        $form=$this->createForm(ClasseType::class,$classes  );
+        $form=$this->createForm(ClasseType::class,$classes);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $manager->persist($classes);
             $manager->flush();
-            // return $this->redirectToRoute('classe');
+          return $this->redirectToRoute('app_classe');
         }
-        return $this->render('classe/form.html.twig',['form'=>$form->createView()]);
+        return $this->render('classe/form.html.twig',['formClasse'=>$form->createView()]);
 
     }
+    #[Route('/classe/{id}',name:'edit_classe')]
+    public function edit($id,ClasseRepository $repo,Request $request):Response
+    {
+       
+        $classes=$repo->find($id);
+        $form=$this->createForm(ClasseType::class,$classes  );
+        
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $repo->add($form->getData(),true);
+            return $this->redirectToRoute('app_classe');
+        }
+        return $this->render('classe/form.html.twig',[
+            'formClasse'=>$form->createView()]);
+        
+    }
+    #[Route('/delete/{id}',name:'delete_classe')]
+    public function delete(
+        ClasseRepository $repo,Classe $classe
+        )
+    {
+       $repo->remove($classe ,true);
+        return new Response($this->redirectToRoute('app_classe')) ;
+
+    }
+
+
     
 }

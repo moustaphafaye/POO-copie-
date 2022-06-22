@@ -9,14 +9,21 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    {{ form_start(form) }}
-    {{ form_row(form.libele,{'attr':{'placeholder':"libele"}}) }}
-    {{ form_row(form.filiere,{'attr':{'placeholder':"filiere"}})}}
-    {{ form_row(form.niveau,{'attr':{'placeholder':"niveau"}})}}
+<div id="listerprof" class="container mt-5">
+<div id="profs" class="example-wrapper">
+
+<div class="centre">
+     <h1 class="hh1">Lister Classe</h1>
+     </div> 
+    {{ form_start(formClasse) }}
+    {{ form_row(formClasse.libele,{'attr':{'placeholder':"libele"}}) }}
+    {{ form_row(formClasse.filiere,{'attr':{'placeholder':"filiere"}})}}
+    {{ form_row(formClasse.niveau,{'attr':{'placeholder':"niveau"}})}}
 
   <button type:"submit" class="btn btn-success">Enregistrer</button>
     
-    {{ form_end(form) }}
+    {{ form_end(formClasse) }}
 </div>
+</div>
+
 {% endblock %}
